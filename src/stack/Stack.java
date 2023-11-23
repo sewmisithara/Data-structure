@@ -30,10 +30,18 @@ public class Stack {
     }
 
     public int pop() {
+        if(isEmpty()) {
+            System.err.println("Stack is empty");
+            return -1;
+        }
         return elementData[top--];
     }
 
     public int peek() { //top
+        if(isEmpty()) {
+            System.err.println("Stack is empty");
+            return -1;
+        }
         return elementData[top];
     }
 
@@ -45,11 +53,19 @@ public class Stack {
         return top == elementData.length - 1;
     }
 
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
+    public void clear() {
+        top = -1;
+    }
+
     public void printStack() {
         System.out.print("[");
         for (int i = 0; i <= top; i++) {
             System.out.print(elementData[i] + ", ");
         }
-        System.out.println("\b\b]");
+        System.out.println(isEmpty() ? "Empty stack]" : "\b\b]");
     }
 }
